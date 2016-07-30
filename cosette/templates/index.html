@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Hit Wonders</title>
+    <link href="/static/normalize.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="/static/main.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="container">
+    <div id="menu">
+        <div id="playlist-handle">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+                <defs>
+                    <path d="M9,11 L27,11 L27,14 L9,14 L9,11 Z M9,16 L27,16 L27,19 L9,19 L9,16 Z M9,21 L21,21 L21,24 L9,24 L9,21 Z M26,22.50 L22,25 L22,20 L26,22.50 Z" id="ytp-svg-34"></path>
+                </defs>
+                <use class="ytp-svg-shadow" xlink:href="#ytp-svg-34"></use>
+                <use class="ytp-svg-fill" xlink:href="#ytp-svg-34"></use>
+            </svg>
+        </div>
+    </div>
+
+    <div id="player-container">
+        <iframe id="player" width="100%" height="100%"
+            src="https://www.youtube.com/embed/{{ first_song }}?enablejsapi=1&iv_load_policy=3"
+            frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div id="playlist">
+        <div id="playlist-header">
+            <form id="search-form">
+                <input type="text" name="q" placeholder="Type a genre or artist..." autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
+            <div id="playlist-close">&times;</div>
+        </div>
+        <div id="playlist-scroll-view">
+            <div id="playlist-items"></div>
+            <div id="playlist-spinner"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var GLOBAL_PLAYLIST = {{ global_playlist|tojson }};
+</script>
+
+<script src="/static/small.js"></script>
+<script src="/static/EventSource.js"></script>
+<script src="/static/main.js"></script>
+<script src="https://www.youtube.com/iframe_api" async></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-76627105-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
